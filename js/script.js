@@ -14,19 +14,45 @@ testWebP(function (support) {
     document.querySelector('body').classList.add('no-webp');
   }
 });
-var burgerMenu = document.querySelector('.header__menu_icon');
-var lines = burgerMenu.querySelectorAll('span');
-var menuNav = document.querySelector(".sub_header_wrapper");
-burgerMenu.addEventListener('click', function () {
-  if (!menuNav.classList.contains('toggle')) {
-    menuNav.classList.add("toggle");
-    lines[0].classList.add("first_line");
-    lines[2].classList.add("second_line");
-    lines[1].classList.add("third_line");
-  } else {
-    menuNav.classList.remove("toggle");
-    lines[0].classList.remove("first_line");
-    lines[2].classList.remove("second_line");
-    lines[1].classList.remove("third_line");
-  }
-});
+
+//burger--------------------------------------
+
+function burgerMenu() {
+  var burgerBtn = document.querySelector(".header__menu_icon"),
+    btnLines = burgerBtn.querySelectorAll("span"),
+    body = document.querySelector("body"),
+    navbar = document.querySelector(".header__nav");
+  navbar.addEventListener('click', function () {
+    navbar.classList.remove("active");
+    body.classList.remove("blocked");
+    btnLines.forEach(function (line) {
+      return line.classList.remove("active-burger");
+    });
+  });
+  burgerBtn.addEventListener("click", function () {
+    if (!navbar.classList.contains("active")) {
+      navbar.classList.add("active");
+      btnLines.forEach(function (line) {
+        return line.classList.add("active-burger");
+      });
+      body.classList.add("blocked");
+    } else {
+      navbar.classList.remove("active");
+      body.classList.remove("blocked");
+      btnLines.forEach(function (line) {
+        return line.classList.remove("active-burger");
+      });
+    }
+  });
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 764) {
+      navbar.classList.remove("active");
+      body.classList.remove("blocked");
+      btnLines.forEach(function (line) {
+        return line.classList.remove("active-burger");
+      });
+    }
+  });
+}
+burgerMenu();
+//-----------------------------------------------
