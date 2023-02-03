@@ -291,7 +291,7 @@ a {
 .main__wrapper {
   flex: 1 1 auto;
   height: 895px;
-  background-image: url("./img/main_section.png");
+  background-image: url("../img/main_section.png");
   background-size: cover;
   background-position: left left;
   background-repeat: no-repeat;
@@ -505,7 +505,7 @@ a {
   align-items: center;
   color: #fff;
   font-size: 23px;
-  background-image: url("./img/front.png");
+  background-image: url("../img/front.png");
   background-size: cover;
   width: 100%;
   height: 310px;
